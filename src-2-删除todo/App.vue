@@ -3,9 +3,7 @@
     <div class="todo-wrap">
       <TodoHeader :addTodo="addTodo"/>
       <TodoMain :todos="todos" :deleteTodo="deleteTodo"/>
-      <TodoFooter :todos="todos"
-                  :deleteCompleteTodos="deleteCompleteTodos"
-                  :selectAllTodos="selectAllTodos"/>
+      <TodoFooter />
     </div>
   </div>
 
@@ -33,14 +31,6 @@
       //删除todo
       deleteTodo(index){                             //这个index不需要再Main组件中声明接受吗
         this.todos.splice(index,1)
-      },
-      //删除已完成的todos
-      deleteCompleteTodos(){
-        this.todos = this.todos.filter(todo => !todo.complete);
-      },
-      //选择全选或全不选的todos
-      selectAllTodos(isComplete){
-        this.todos.forEach(todo => todo.complete = isComplete);
       }
     },
     components:{
