@@ -1,13 +1,12 @@
 <template>
   <ul class="todo-main">
-    <item v-for="(todo,index) in todos" :key="index" :todo="todo" :deleteTodo="deleteTodo" :index="index"/>
+    <item v-for="(todo,index) in todos" :key="index" :todo="todo"/>
   </ul>
 </template>
 <script>
   import Item from './Item.vue'
   export default{
-    //声明接受父组件传过来的属性或方法,方法一:props:['属性名','方法名']
-    props:['todos','deleteTodo'],
+    props:['todos'],
     components:{
       Item
     }
