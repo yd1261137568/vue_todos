@@ -1,8 +1,8 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <TodoHeader @addTodo="addTodo"/>
-      <TodoMain :todos="todos"/>
+      <TodoHeader :addTodo="addTodo"/>
+      <TodoMain :todos="todos" :deleteTodo="deleteTodo"/>
       <TodoFooter :todos="todos"
                   :deleteCompleteTodos="deleteCompleteTodos"
                   :selectAllTodos="selectAllTodos"/>
@@ -15,7 +15,6 @@
   import Main from './components/Main.vue';
   import Footer from './components/Footer.vue';
   import storageUtils from './utils/storageUtils';
-  import PubSub from 'pubsub-js';
   export default{
     data(){
       return {
@@ -28,20 +27,13 @@
 //        todos:storageUtils.readTodos()
       }
     },
-    //处理异步操作
-    mounted(){
-      //订阅消息(deleteTodo)
-      PubSub.subscribe('deleteTodo',(meg,index) => {
-        this.deleteTodo(index);
-      })
-    },
     methods:{
       addTodo(todo){
         //在首行添加todo
         this.todos.unshift(todo);
       },
       //删除todo
-      deleteTodo(index){
+      deleteTodo(index){                             //这个index不需要再Main组件中声明接受吗
         this.todos.splice(index,1)
       },
       //删除已完成的todos

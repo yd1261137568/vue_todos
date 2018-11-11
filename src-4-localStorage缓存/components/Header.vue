@@ -5,6 +5,13 @@
 </template>
 <script>
   export default{
+    // 指定接收属性的属性名, 属性值的类型, 必要性
+    props:{
+      addTodo:{
+        type:Function,
+        required:true
+      }
+    },
     data () {
       return {
         title:''
@@ -23,8 +30,8 @@
           title,
           complete:false
         }
-        //分发一个自定义事件(事件名:addTodo)******相当于分发消息(事件名,数据),在App标签中绑定事件监听相当于订阅消息(事件名,回调函数)
-        this.$emit('addTodo',todo);
+        //调用addTodo(),添加todo
+        this.addTodo(todo);
         //清空输入框数据
         this.title = ''
       }
