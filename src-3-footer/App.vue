@@ -18,13 +18,11 @@
   export default{
     data(){
       return {
-        /*todos:[
+        todos:[
           {title:'吃饭',complete:false},
           {title:'睡觉',complete:false},
           {title:'打豆豆',complete:false}
-        ]*/
-        todos:JSON.parse(localStorage.getItem('todos_key') || '[]')
-//        todos:storageUtils.readTodos()
+        ]
       }
     },
     methods:{
@@ -44,18 +42,6 @@
       selectAllTodos(isComplete){
         this.todos.forEach(todo => todo.complete = isComplete);
       }
-    },
-    watch:{
-      todos:{//深度监视
-        deep:true,
-        handler:function (value) {
-          //将todos中的json字符串保存到localstorage中
-          localStorage.setItem('todos_key',JSON.stringify(value))
-//          storageUtils.saveTodos(value)
-        }
-//        handler:storageUtils.saveTodos
-      }
-
     },
     components:{
       TodoHeader:Header,
