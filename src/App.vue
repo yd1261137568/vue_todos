@@ -1,7 +1,7 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <TodoHeader />
+      <TodoHeader :addTodo="addTodo"/>
       <TodoMain :todos="todos"/>
       <TodoFooter />
     </div>
@@ -21,6 +21,12 @@
           {title:'睡觉',complete:false},
           {title:'打豆豆',complete:false}
         ]
+      }
+    },
+    methods:{
+      addTodo(todo){
+        //在首行添加数据
+        this.todos.unshift(todo);
       }
     },
     components:{
