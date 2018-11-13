@@ -35,7 +35,6 @@
           //指定发布消息名(deleteTodo)
           PubSub.publish('deleteTodo',index)
         }
-
       }
     }
   }
